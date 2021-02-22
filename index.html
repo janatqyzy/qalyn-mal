@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    html {
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+  }
+  
+  body {
+     background: gray;
+
+  }
+  img {
+    width: 100px;
+    height: 100px;
+    float: right; 
+    margin-top: 0;
+
+  }
+  h1 {
+      font-family: 'Oswald', sans-serif;
+      text-align: center;
+  }
+  
+  </style>
+
+<head>
+    <meta charset="utf-8">
+    <title>Qalyn Calculator</title>
+</head>
+
+<body>
+  <script>
+      var education, family, skills, ages, gossips, output, btnShow;
+    function calculator() {
+    education = document.getElementById("education");
+    family = document.getElementById("family_networth");
+    skills = document.getElementsByClassName('skills');
+    ages = document.getElementsByClassName('age');
+    gossips = document.getElementsByClassName('gossips');
+    output = document.getElementById('output');
+    btnShow = document.querySelector("button");
+    var sum = 500;
+    sum =sum*education.value;
+    sum = sum*family.value;
+    for (i = 0; i < 4; i++) {
+        if (skills[i].checked === true) {
+            sum += parseInt(skills[i].value);
+        }
+    }
+    for (i = 0; i < 3; i++) {
+        if (gossips.checked === true) {
+            if (gossips.value !== "200") {
+                sum = sum*Number(gossips.value);
+            } 
+            else {
+                sum =sum-Number(gossips.value);
+            }
+        }
+        if (ages.checked === true) {
+            sum = sum*Number(ages.value);
+        }
+    }
+    output.innerText = sum + "$";
+};
+
+  </script>
+    <div>
+        <img src="https://lh3.googleusercontent.com/proxy/qS_D-DbqQ2vRbyMZy-kvT5rOhifJJFa1VAnwBmwqVajOQJ1NvHt_57IDacwHaFutIBfdpsSMPV61wqr7kHQFP_3atfEN4-Ui-cWLEYl-I_bLQQzE9w">
+
+        <h1>Calculate Your Groom's Qalyn Mal</h1>
+       
+       
+        <label for="education">Education:</label>
+        <select id="education">
+            <option value="blank"></option>
+            <option value=1.5>Bachelor's degree</option>
+            <option value=1.2>College degree</option>
+            <option value=1.05>High school degree</option>
+            <option value=0.9>Middle school degree</option>
+        </select><br><br>
+
+        <label for="family_networth">Family net worth:</label>
+        <select id="family_networth">
+            <option value="blank"></option>
+            <option value=2>More than 100,000$</option>
+            <option value=1.5>Between 50,000$ and 100,000$</option>
+            <option value=1.2>Less than 50,000$</option>
+        </select><br>
+
+        <p>Skills:</p>
+        <input type="checkbox" class="skills" name="dombra" value=100>
+        <label for="dombra">Playing on dombra</label><br>
+        <input type="checkbox" class="skills" name="cook" value=200>
+        <label for="cook">Good cook</label><br>
+        <input type="checkbox" class="skills" name="character" value=150>
+        <label for="character">Easygoing character</label><br>
+        <input type="checkbox" class="skills" name="sing" value=100>
+        <label for="sing">Sings well</label><br>
+
+        <p>Age:</p>
+        <input type="radio" class="age" name="age1" value=1.5>
+        <label for="age1">Between 18-23</label><br>
+        <input type="radio" class="age" name="age2" value=1.2>
+        <label for="age2">Between 24-27</label><br>  
+        <input type="radio" class="age" name="age3" value=0.95>
+        <label for="age3">28+</label><br><br>
+
+        <p>Reputation:</p>
+        <input type="checkbox" class="gossips" name="gossips1" value=0.85>
+        <label for="gossips1"> Gossips about his parent's attitude</label><br>
+        <input type="checkbox" class="gossips" name="gossips2" value=0.9>
+        <label for="gossips2">Gossips about his character</label><br>
+        <input type="checkbox" class="gossips" name="gossips3" value=200>
+        <label for="gossips3">General gossips around his person</label><br>
+        <br>
+        <button onclick="calculator()">Show</button>
+        <h1 id="output">Total</h1>
+    </div>
+   </body>
+
+</html>
